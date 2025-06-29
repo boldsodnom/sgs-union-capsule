@@ -56,3 +56,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error("Error loading capsules:", error);
   }
 });
+    console.log("✔ Firebase loaded, script running...");
+    console.log("✔ Capsule config:", config);
+    console.log("✔ Snapshot size:", snapshot.size);
