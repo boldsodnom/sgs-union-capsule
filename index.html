@@ -1,50 +1,108 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UnionPiClub</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnionPiClub Gateway</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #111;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 1rem 2rem;
+    }
+    nav {
+      background-color: #f2f2f2;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: #666;
+      border-top: 1px solid #ddd;
+    }
+  </style>
 </head>
 <body>
-  <h1>🧠 UnionPi Capsule Feed</h1>
-  <div id="capsule-feed">Loading Capsules...</div>
+  <header>
+    <h1>UnionPiClub 🚀</h1>
+    <p>Minimalist Gateway for Pi Community Members</p>
+  </header>
 
-  <!-- Capsule render logic with Firebase Modular SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  <nav>
+    <a href="#about">About</a>
+    <a href="#access">Access</a>
+    <a href="#projects">Projects</a>
+    <a href="#news">News</a>
+    <a href="#community">Community</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyAN6glFtcpkblLO153R4voEqCq3Bkd4BvQ",
-      authDomain: "unionpiclub-core.firebaseapp.com",
-      projectId: "unionpiclub-core",
-      storageBucket: "unionpiclub-core.appspot.com",
-      messagingSenderId: "447464759147",
-      appId: "1:447464759147:web:1ea6af08abda78b33e362e"
-    };
+  <section id="about">
+    <h2>🔍 What is UnionPiClub?</h2>
+    <p>UnionPiClub is a Pi community gateway to real use cases, AI mentors, smart capsules, and trusted services powered by SGS Neuron Core.</p>
+  </section>
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  <section id="access">
+    <h2>🔑 Access Options</h2>
+    <ul>
+      <li><strong>Sign in:</strong> Free for all Pi users</li>
+      <li><strong>Sign up:</strong> Premium membership with NFT+ access</li>
+    </ul>
+  </section>
 
-    const container = document.getElementById("capsule-feed");
-    container.innerHTML = "Loading Capsules...";
+  <section id="projects">
+    <h2>🧠 Projects with Pi</h2>
+    <ul>
+      <li><a href="https://smartpi.app">SmartPi</a> — AI + Pi Learning Capsule</li>
+      <li><a href="#">UnionPiFund</a> — Community Crowdfunding</li>
+      <li><a href="#">Idea Shop</a> — Creative Capsule Marketplace</li>
+      <li><a href="#">Farmine</a> — Pi Node Hosting & Rental</li>
+    </ul>
+  </section>
 
-    const q = query(collection(db, "capsules"), where("isActive", "==", true));
-    const snapshot = await getDocs(q);
-    const capsules = snapshot.docs.map(doc => doc.data());
+  <section id="news">
+    <h2>📰 News</h2>
+    <p>Pi2Day 2025, SGS updates, capsule showcases, and more...</p>
+  </section>
 
-    if (!capsules.length) {
-      container.innerHTML = "<p>😢 No capsules found.</p>";
-    } else {
-      const list = document.createElement("ul");
-      capsules.forEach(capsule => {
-        const li = document.createElement("li");
-        li.innerHTML = `<strong>${capsule.title}</strong><br>${capsule.description}`;
-        list.appendChild(li);
-      });
-      container.innerHTML = "";
-      container.appendChild(list);
-    }
-  </script>
+  <section id="community">
+    <h2>🌍 Community</h2>
+    <ul>
+      <li><a href="https://facebook.com/unionpiclub">Facebook</a></li>
+      <li><a href="https://t.me/unionpiclub">Telegram</a></li>
+      <li><a href="https://x.com/unionpiclub">X (Twitter)</a></li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>📬 Contact Us</h2>
+    <p>Email: unionpiclub@gmail.com</p>
+  </section>
+
+  <footer>
+    &copy; 2025 UnionPiClub. Powered by SGS Neuron Core.
+  </footer>
 </body>
 </html>
